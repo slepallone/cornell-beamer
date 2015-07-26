@@ -1,0 +1,194 @@
+\mode<presentation>
+
+\DeclareOptionBeamer{navbar}[true]{\def\beamer@cornell@navbar{#1}}
+\DeclareOptionBeamer{pagenumbers}[true]{\def\beamer@cornell@pagenumbers{#1}}
+\DeclareOptionBeamer{colorblocks}[true]{\def\beamer@cornell@colorblocks{#1}}
+\DeclareOptionBeamer{subsectiondots}[true]{\def\beamer@cornell@subsectiondots{#1}}
+\ProcessOptionsBeamer
+\def\beamer@cornell@truetext{true}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{background canvas}{
+\ifnum\c@framenumber=1
+     \includegraphics{title_bg.pdf}
+%uncomment to put the Cornell logo on every slide
+%\else
+%    \includegraphics{slide_bg.pdf}
+\fi
+}
+
+%activly used colors
+\definecolor{cblue}{RGB}{79,111,138}
+\definecolor{cred}{RGB}{179,27,27}
+\definecolor{cgray}{RGB}{104,100,91}
+%other colors
+\definecolor{cpurple}{RGB}{128,66,128}
+\definecolor{cgreen}{RGB}{30,119,72}
+\definecolor{cyellow}{RGB}{212,170,0}
+\definecolor{corange}{RGB}{206,102,0}
+
+
+%define margins
+\setbeamersize{text margin left = 1cm, text margin right =1cm}
+\setbeamersize{sidebar width left=0pt}
+\setbeamersize{sidebar width right=0pt}
+
+
+%basic colors
+\setbeamercolor{background canvas}{fg=black,bg=white}
+\setbeamercolor{background}{fg=black,bg=white}
+\setbeamercolor{palette secondary}{fg=cred} %footline
+\setbeamercolor{palette tertiary}{fg=white,bg=cgray} %headline
+\setbeamercolor{palette quaternary}{fg=cred} %title
+\setbeamercolor{high stripe}{bg=cred}
+
+\setbeamercolor*{structure}{fg=cblue}
+\setbeamercolor{headline}{parent=palette tertiary}
+\setbeamercolor{footline}{parent=palette secondary}
+\setbeamercolor{section in head/foot}{parent=footline}
+\setbeamercolor{title}{parent=palette quaternary}
+\setbeamercolor{titlelike}{}
+
+%modifies text
+\setbeamercolor{normal text}{}
+\setbeamercolor{alerted text}{fg=cred}
+\setbeamercolor{example text}{fg=cgreen}
+\definecolor{block color}{named}{cblue}
+
+%modifies blocks (uses color.fg too much)
+
+\ifx\beamer@cornell@colorblocks\beamer@cornell@truetext
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamercolor{block body}{fg=normal text.fg,bg=block color!20!white}
+\setbeamercolor{block body alerted}{fg=normal text.fg,bg=alerted text.fg!40!white}
+\setbeamercolor{block body example}{fg=normal text.fg,bg=example text.fg!20!white}
+
+\setbeamercolor{block title}{fg=normal text.fg,bg=block color!70!white}
+\setbeamercolor{block title alerted}{fg=normal text.fg,bg=alerted text.fg!70!white}
+\setbeamercolor{block title example}{fg=normal text.fg,bg=example text.fg!70!white}
+\else
+
+
+
+\fi
+\addtobeamertemplate{block begin}{}{\setbeamercolor{item}{fg=block color}}
+\addtobeamertemplate{block alerted begin}{}{\setbeamercolor{item}{fg=alerted text.fg}}
+\addtobeamertemplate{block example begin}{}{\setbeamercolor{item}{fg=example text.fg}}
+
+
+%default itemize stuff
+\setbeamertemplate{itemize items}[circle]
+\setbeamerfont{enumerate item}{series=\bfseries}
+\setbeamerfont{enumerate subitem}{series=\bfseries}
+\setbeamerfont{enumerate subsubitem}{series=\bfseries}
+
+
+\setbeamerfont{headline}{size=\tiny, shape=\scshape}
+\setbeamerfont{footline}{size=\tiny, shape=\scshape}
+
+
+\setbeamertemplate{section in toc}[circle]
+\setbeamercolor{section in toc}{parent=normal text}
+
+
+\defbeamertemplate{headline}{Cornell theme}
+{
+\leavevmode
+\hskip-2.5pt
+\begin{beamercolorbox}[wd=0.677\paperwidth,center]{headline}
+\vbox to 8pt{\vfil\insertshorttitle\vfil}
+\end{beamercolorbox}
+\hskip-2.5pt
+\begin{beamercolorbox}[wd=0.33\paperwidth,center]{headline}
+\vbox to 8pt{\vfil\insertauthor\vfil}
+\end{beamercolorbox}
+}
+\setbeamertemplate{headline}[Cornell theme]
+
+
+\defbeamertemplate{frametitle}{Cornell theme}
+{
+\vskip -2pt
+\begin{beamercolorbox}[wd=0.7\paperwidth,ht=11pt]{title}
+\insertframetitle
+\end{beamercolorbox}
+\vskip-8pt
+\hskip-29pt
+\begin{beamercolorbox}[wd=0.8\paperwidth,ht=1pt]{high stripe}
+\end{beamercolorbox}
+}
+\setbeamertemplate{frametitle}[Cornell theme]
+
+\defbeamertemplate{footline}{Cornell theme}
+{
+\leavevmode
+\begin{beamercolorbox}[wd=0.92\paperwidth,ht=14pt]{footline}
+\ifx\beamer@cornell@navbar\beamer@cornell@truetext
+    \vbox to 14pt{\vfil\insertnavigation{0.9\paperwidth}\vfil}
+\fi
+\end{beamercolorbox}
+\hskip-2.5pt
+\begin{beamercolorbox}[wd=0.08\paperwidth,ht=14pt,center]{footline}
+\ifx\beamer@cornell@pagenumbers\beamer@cornell@truetext
+\vbox to 14pt{\vfil\textbf{\insertframenumber/\inserttotalframenumber}\vfil}
+\fi
+\end{beamercolorbox}
+}
+\setbeamertemplate{footline}[Cornell theme]
+
+\defbeamertemplate{title page}{Cornell theme}
+{
+\begin{beamercolorbox}[wd=\paperwidth, ht=8pt]{palette tertiary}
+\end{beamercolorbox}
+\vskip 1.5cm
+\hbox{
+\vbox to 7.75cm{
+\begin{center}
+\textcolor{cred}{{\Large \inserttitle}}
+\vskip 1pt
+\textcolor{cred}{{\scriptsize \insertsubtitle}}
+\vskip 15pt
+{\scriptsize\insertinstitute}
+\vskip 10pt
+\insertdate
+\end{center}
+\vfil
+}
+}
+\vskip 1pt
+}
+
+\setbeamertemplate{title page}[Cornell theme]
+
+% TOC for the parts, not implemented properly and so not used
+\makeatletter
+\AtBeginPart{
+\addtocontents{toc}{\protect\beamer@partintoc{\the\c@part}{\beamer@partnameshort}{\the\c@page}}%
+}
+%% number, shortname, page.
+\providecommand\beamer@partintoc[3]{
+    \ifnum\c@tocdepth=-1\relax
+        % requesting onlyparts.
+        \makebox[6em]{PAFT #1:} #2
+        \par
+\fi
+}
+\define@key{beamertoc}{onlyparts}[]{
+\c@tocdepth=-1\relax
+}
+\makeatother
+
+%One bullet per subsection not one for each page in navbar
+
+%\ifx\beamer@cornell@subsectiondot\beamer@cornell@truetext
+%\makeatletter
+%\usepackage{etoolbox}
+%\patchcmd{\slideentry}{\advance\beamer@xpos by1\relax}{}{}{}
+%\def\beamer@subsectionentry#1#2#3#4#5{\advance\beamer@xpos by1\relax}%
+%\makeatother
+%
+%\fi
+%
+%\begin{frame}\partpage\end{frame}
+%\begin{frame}\frametitle{\large Part \insertpartnumber: \insertpart}\tableofcontents[part=\insertpartnumber]\end{frame}

@@ -1,0 +1,313 @@
+\documentclass[serif]{beamer}
+
+%set the theme to Cornell and set options.
+%navbar=true shows the navigation bar in the footline. navbar=false hides it
+%colorblocks=true makes the block (and theorem) environment appear as a colored box. colorblocks=false makes the block (and theorem) environment very plain.
+\mode<presentation>
+{
+\usetheme
+[navbar=true,colorblocks=true,pagenumbers=true]{Cornell}
+}
+
+%these packages are essential for compiling
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+%short title appears in headline, long title appears on title page, subtitle appears on title page
+\title[Short Title]{Long Title}
+\subtitle{Subtitle}
+
+%the author only appears in the headline of slides
+\author[]{Author Name}
+
+%the institute contains all information, including author name. only appears on title page
+\institute
+{
+\begin{tabular}[h]{cc}
+\normalsize Author One  & \normalsize Author Two \\
+~\\
+Institute One           & Institute Two \\
+Department One          & Department Two \\
+{\tt email@one.com}     & {\tt email@two.com}
+\end{tabular}
+}
+
+\date[]{October 11, 2011}
+
+%uncomment the following lines to change major colors in the theme. they are currently set to their defaults.
+
+%\setbeamercolor*{structure}{fg=cblue} %misc. elements, like toc pages and itemize
+%\setbeamercolor{palette secondary}{fg=cred} %footline
+%\setbeamercolor{palette tertiary}{fg=white,bg=cgray} %headline
+%\setbeamercolor{palette quaternary}{fg=cred} %title
+%\setbeamercolor{high stripe}{bg=cred} %stripe in title
+%\definecolor{block color}{named}{cblue} %normal block colors
+
+
+\begin{document}
+
+%#################################################
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+%#################################################
+
+\part{Basic Usage}
+\section{Good and Bad}
+\subsection*{}
+
+%#################################################
+\begin{frame}{The Good}
+\begin{itemize}
+\item \textbf{LOTS} of screen space on each slide.
+\item Vector graphics: scales to any screen size.
+\item Has a reasonably well integrated color scheme.
+\item Navigation bar can be micro-managed.
+\item Some options: navigation bar and block environment.
+\end{itemize}
+\end{frame}
+%#################################################
+
+%#################################################
+\begin{frame}{The Bad}
+Kind of fiddly.
+\begin{itemize}
+\item Small template changes (font, text size, different spacings, etc.) may break entire theme.
+\item ``Bad box'' exceptions when compiling are possible.
+\end{itemize}
+Requires non-standard inputs.
+\begin{itemize}
+\item Empty subsections (or non-empty, if you prefer) required after each section change for minipages to appear in navigation bar.
+\item Need to format the ``institute'' in a non-standard way.
+\item Need to put main author's name in institute section.
+\end{itemize}
+\end{frame}
+%#################################################
+
+\section{Using Theme}
+\subsection*{}
+
+%#################################################
+\begin{frame}{Title, Author, Date}
+Use the annotated TeX file to learn the necessary inputs prior to the first slide, like:
+\begin{itemize}
+\item The name to appear in the header.
+\item The title to appear in the header.
+\item The information to appear on the title slide.
+\end{itemize}
+\end{frame}
+%#################################################
+
+%#################################################
+\begin{frame}{Options}
+There are three options in the theme:
+\begin{enumerate}
+\item navbar (set to true in these slides)
+\begin{itemize}
+\item Setting to true displays navigation bar in the footline.
+\item Setting to false hides navigation bar in the footline.
+\end{itemize}
+\item colorblocks (set to true in these slides)
+\begin{itemize}
+\item Setting to true makes block (and theorem) environment appear as colored box.
+\item Setting to false makes block (and theorem) environment very plain.
+\end{itemize}
+\item pagenumber (set to true in these slides)
+\begin{itemize}
+\item Setting to true displays page numbers in the footline.
+\item Setting to false hides page numbers in the footline.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+%#################################################
+
+%#################################################
+\begin{frame}{Table of Contents}
+Table of contents slides are nice.
+\begin{itemize}
+\item Learn to use them: page 100 in Beamer manual.
+\item You probably don't want to display subsections.
+\end{itemize}
+
+\end{frame}
+%#################################################
+
+%#################################################
+\tableofcontents[currentsection,subsectionstyle=hide]
+%#################################################
+
+
+\section{Navigation Bar}
+\subsection{}
+
+%#################################################
+\begin{frame}{Sections, Subsections, and Parts}
+
+The navigation bar is small. This may force you to use parts!
+\begin{itemize}
+\item Learn to use them: page 98 in Beamer manual.
+\item Sections in different parts don't display in the same navigation bar. This eliminates crowded navigation bars.
+\item If you have many sections split them into multiple parts.
+\item If you have many slides split them into multiple parts.
+\end{itemize}
+
+\end{frame}
+%#################################################
+
+%#################################################
+\begin{frame}{Navigation Bar}
+
+\begin{itemize}
+\item You can turn off the navigation bar via the navbar option.
+\end{itemize}
+
+\begin{block}{If you want just sections in the navigation bar:}
+\begin{itemize}
+\item Create sections.
+\item Don't create subsections.
+\end{itemize}
+\end{block}
+
+\begin{block}{If you want sections and a dot underneath for each slide:}
+\begin{itemize}
+\item Create sections.
+\item If you want a slide to appear as a dot put it in a subsection.
+\item You can make empty subsections with \textbackslash subsection\{\}.
+\end{itemize}
+\end{block}
+
+\end{frame}
+%#################################################
+
+
+\section{Dummy Section}
+
+%#################################################
+\begin{frame}{Dummy Slide}
+
+This slide does not appear as a dot in the navigation bar because it is not in a subsection.
+
+\end{frame}
+%#################################################
+
+
+\section{Special Text}
+\subsection{}
+
+%#################################################
+\begin{frame}{Blocks}
+
+\begin{block}{Blocks}
+are grayish blue. Itemize and enumerate items are unchanged in blocks (and theorems).
+\begin{itemize}
+\item Item color.
+\end{itemize}
+\begin{enumerate}
+\item Enumerate color.
+\end{enumerate}
+\end{block}
+
+
+\end{frame}
+%#################################################
+
+
+%#################################################
+\begin{frame}{Special Text}
+
+\begin{alertblock}{Alerted Blocks}
+and alerted text are Cornell red. Itemize and enumerate items change color in alerted blocks.
+\begin{itemize}
+\item Item color.
+\end{itemize}
+\begin{enumerate}
+\item Enumerate color.
+\end{enumerate}
+\end{alertblock}
+
+\begin{exampleblock}{Example Blocks}
+and example text are grayish green. Who cares anyway, no one uses these. Itemize and enumerate items change color in example blocks.
+\begin{itemize}
+\item Item color.
+\end{itemize}
+\begin{enumerate}
+\item Enumerate color.
+\end{enumerate}
+\end{exampleblock}
+
+\end{frame}
+%#################################################
+
+\section{Colors}
+\subsection{}
+
+%#################################################
+\begin{frame}{Beamer Colors}
+
+There are a few Beamer colors that can be tampered with. The code for changing them is in the preamble of this TeX file.
+\begin{itemize}
+\item structure: controls misc. elements, like colors in toc pages and itemize elements.
+\item palette secondary: controls colors in footline.
+\item palette tertiary: controls colors in headline.
+\item palette quaternary: controls colors in slide titles.
+\item high stripe: controls color of stripe under slide titles.
+\end{itemize}
+~\\
+There is one non-beamer color of interest:
+\begin{itemize}
+\item block color: controls colors in regular blocks.
+\end{itemize}
+
+\end{frame}
+%#################################################
+
+%#################################################
+\begin{frame}{Color Definitions}
+
+There are many custom colors used in this template. Each of them is a prefixed with a ``c'' for cornell.
+\begin{itemize}
+\item \textbf{\textcolor{cred}{cred}}: RGB 179,27,27
+\item \textbf{\textcolor{cblue}{cblue}}: RGB 79,111,138
+\item \textbf{\textcolor{cgray}{cgray}}: RGB 104,100,91
+\item \textbf{\textcolor{cgreen}{cgreen}}: RGB 30,119,72
+\end{itemize}
+~\\
+There are other colors that are defined and unused:
+\begin{itemize}
+\item \textbf{\textcolor{cpurple}{cpurple}}: RGB 128,66,128
+\item \textbf{\textcolor{cyellow}{cyellow}}: RGB 212,170,0
+\item \textbf{\textcolor{corange}{corange}}: RGB 206,102,0
+\end{itemize}
+~\\
+Using only these in accompanying images will keep everything looking uniform.
+
+
+\end{frame}
+%#################################################
+
+\part{Future Work}
+
+\section{Future Work}
+
+%#################################################
+\begin{frame}{Future Work}
+There are two somewhat complicated things to implement:
+\begin{itemize}
+\item Change the style of the block environment
+\item Create a TOC for parts similar to the one that exists for sections
+\end{itemize}
+There is also some easier but time consuming stuff to implement:
+\begin{itemize}
+\item Make logos Tikz drawings and embed them in the style file
+\item Include an option to put the Cornell logo in the top corner on every slide. Currently available in the style file by uncommenting
+\item An option to make each subsection appear as a dot in the navbar instead of each page. Currently available in the style file by uncommenting
+\end{itemize}
+\end{frame}
+%#################################################
+
+
+
+
+\end{document}
+
