@@ -9,6 +9,10 @@ talks by Cornell University members.
   relies on the `title_bg.pdf` image for rendering the title page
   background.
 
+- The file `exampletalk.pdf` is the result of compiling the
+  `exampletalk/exampletalk.tex` file, and contains useful information
+  on how to use this theme.
+
 - The directory `exampletalk` contains a lengthy example of how to use
   this theme.
 
